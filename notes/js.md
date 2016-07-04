@@ -41,3 +41,37 @@ If window or document use .attr() in jQuery1.6, it will doesn't work, because wi
 * `disabled` attribute in jQuery.  
 The function of `disabled` is to avoid using a certain element.  
 
+**Conclusion**  
+When we want to change the inherent quality of HTML element, we always use `attr()`.  
+When we want to change the custom DOM attributes of HTML element, we always use `prop()`.  
+*For example:*  
+(1) example 1  
+```
+<a href="http://www.baidu.com" target="_self" class="btn">百度</a>
+```
+In this `<a>` tag, it has "href", "target" and "class" attributes. These attributes are the inherent attributes of `<a>` tag. So we will use `prop()`.  
+```
+<a href="#" id="link1" action="delete">删除</a>
+```
+In this `<a>` tag. Inherent attributes are "href" and "id". Custom attribute is "action". So we use `attr()` for attribute "action".  
+(2) example 2  
+```
+<input id="chk1" type="checkbox" />是否可见
+<input id="chk2" type="checkbox" checked="checked" />是否可见
+```
+Some elements in HTML like "checkbox" and "select" have their inherent attributes such as "checked" and "selected". So we always use `prop()`.  
+```
+$("#chk1").prop("checked") == false
+$("#chk2").prop("checked") == true
+``` 
+If we use `attr()`.  
+```
+$("#chk1").attr("checked") == undefined
+$("#chk2").attr("checked") == "checked"
+```
+***
+* `disabled` attribute in jQuery.  
+The function of `disabled` is to avoid using a certain element.  
+***
+* selector `>` in CSS  
+It means the first generation child elements. 
