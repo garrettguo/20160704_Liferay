@@ -21,4 +21,7 @@ $(".content.$randomNamespace").unbind("click").on("click", "li .faq-question", f
 10.use `git push origin feat1`
 ```
 ***
-* s
+* How to change the commit message?  
+```
+git commit --amend -m "Story HSF3-216 #comment Create FAQ pages."
+```
