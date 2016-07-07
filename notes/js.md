@@ -40,4 +40,6 @@ If window or document use .attr() in jQuery1.6, it will doesn't work, because wi
 ***
 * `disabled` attribute in jQuery.  
 The function of `disabled` is to avoid using a certain element.  
-
+***
+* selector `>` in CSS  
+It means the first generation child elements. 
