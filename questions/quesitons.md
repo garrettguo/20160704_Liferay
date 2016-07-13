@@ -25,3 +25,8 @@ $(".content.$randomNamespace").unbind("click").on("click", "li .faq-question", f
 ```
 git commit --amend -m "Story HSF3-216 #comment Create FAQ pages."
 ```
+***
+* 如何生成git密钥？  
+```
+ssh-keygen
+```
