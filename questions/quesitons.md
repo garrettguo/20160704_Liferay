@@ -30,3 +30,17 @@ git commit --amend -m "Story HSF3-216 #comment Create FAQ pages."
 ```
 ssh-keygen
 ```
+***
+* el表达式中的`[]`是什么意思？  
+```
+${user.name} <==> ${user[name]}
+```
+若属性名中出现了特殊字符，如"."或者"-"等，这时就必须使用`[]`以避免语法上的冲突
+***
+* 如何查看某一个进程是否还在运行？
+例如：
+```
+ps -aux | grep tomcat
+```
+***
+* Liferay中的"Custome fields"有什么用法？  
