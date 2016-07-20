@@ -44,3 +44,19 @@ ps -aux | grep tomcat
 ```
 ***
 * Liferay中的"Custome fields"有什么用法？  
+
+用来控制role。
+***
+* Liferay中Custom-sql的用法？
+`https://dev.liferay.com/develop/tutorials/-/knowledge_base/6-2/developing-custom-sql-queries`  
+`http://www.programcreek.com/java-api-examples/index.php?api=com.liferay.util.dao.orm.CustomSQLUtil`  
+***
+* jstl中的functions  
+`http://www.360doc.com/content/12/1112/10/11018021_247347185.shtml`
+***
+* liferay中`<liferay:ui message key="xxx">`的用法  
+step1: 首先在`portlet.xml`中的`<supports>`标签中加入如下定义：  
+```
+<resource-bundle>content.Language</resource-bundle>
+```
+step2:  在`Language.properties`文件中加入key,value，其中key就是`<liferay:ui message key="xxx">`中的key，value就是你要替换的值。
