@@ -60,3 +60,22 @@ step1: 首先在`portlet.xml`中的`<supports>`标签中加入如下定义：
 <resource-bundle>content.Language</resource-bundle>
 ```
 step2:  在`Language.properties`文件中加入key,value，其中key就是`<liferay:ui message key="xxx">`中的key，value就是你要替换的值。
+***
+* 怎样在linux中强制停止某一个进程？  
+```
+sudo pkill -9 java
+```
+***
+* Java中如何对Map排序？
+```
+Map<String, String> map = new TreeMap<>(new Comparetor<String>(){
+    @override
+    ...
+    ...
+});
+```
+***
+* linux中postgres的配置文件的位置？  
+```
+/var/lib/pgsql/9.4/data/pg_hba.conf
+```
