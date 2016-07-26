@@ -75,3 +75,67 @@ The function of `disabled` is to avoid using a certain element.
 ***
 * selector `>` in CSS  
 It means the first generation child elements. 
+***
+* `<script>`的defer属性：  
+```
+<script type="text/javascript" defer="defer" src="..."></script>
+```
+告诉浏览器在整个页面都解析完毕后再执行脚本
+注：  
+(1) 只适用于外部脚本文件
+***
+* `<script>`的async属性：  
+```
+<script type="text/javascript" async src="example1.js"></script>
+<script type="text/javascript" async src="example2.js"></script>
+```
+不让页面等待两个脚本下载和执行，从而异步加载页面其他内容。
+注：  
+(1) 一定会再页面load前执行
+(2) 只适用于外部脚本文件
+(3) 异步脚本不要再加载期间修改DOM
+***
+* XHTML中的`<script>`  
+```
+<script type="text/javascript">
+    function compare(a, b) {
+        if (a < b) {
+            ...
+        }
+    }
+</script>
+```
+"<"在XHTML中被当作一个新标签的开始来解析，而作为一个标签来讲，小于号后面不能有空格，所以会导致语法错误。
+解决办法：  
+(1) `if (a &lt; b)`  
+(2)  
+```
+<script type="text/javascript"><![CDATA[
+    function compare(a, b) {
+        if (a < b) {
+            ...
+        }
+    }
+]]></script>
+```
+***
+* 文档模式：  
+混杂模式和标准模式  
+***
+* `<noscript>`标签  
+触发条件：  
+(1) 浏览器不支持脚本  
+(2) 脚本被禁用  
+能够包含`<body>`中的任何HTML元素  
+```
+<html>
+    <head>
+        ...
+    </head>
+    <body>
+        <noscript>
+            <p>...</p>
+        </noscript>
+    </body>
+</html>
+```
