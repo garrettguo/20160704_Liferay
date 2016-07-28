@@ -79,3 +79,66 @@ Map<String, String> map = new TreeMap<>(new Comparetor<String>(){
 ```
 /var/lib/pgsql/9.4/data/pg_hba.conf
 ```
+***
+* 在两个portlet之间传递数据  
+step1 :  portlet.xml  
+PortletA:  
+```
+<supported-public-render-parameter>roleId</supported-public-render-parameter>
+```
+PortletB:  
+```
+<supported-public-render-parameter>roleId</supported-public-render-parameter>
+```
+在portlet定义的最后加上：  
+```
+<portlet-app>
+    ...
+    <public-render-parameter>
+        <identifier>roleId</identifier>
+        <qname xmlns:x="http://www.liferay.com/public-render-parameters">
+            x:roleId
+        </qname>
+    </public-render-parameter>
+</portlet-app>
+```
+step2 :  liferay-portlet.xml
+在要交互参数的两个`<portlet>`中加入:  
+```
+...
+<icon>...</icon>
+<private-session-attribute>false</private-session-attribute>
+...
+```
+step3 :  
+Portlet B:  
+```
+...
+PortletSession session = renderRequest.getPortletSession();
+session.setAttribute("roleId", roleIdString, PortletSession.APPLICATION_SCOPE);
+...
+```
+Portlet A:  
+```
+...
+PortletSession session = renderRequest.getPortletSession();
+session.getAttribute("roleId", PortletSession.APPLICATION_SCOPE);
+...
+```
+***
+* portlet中form的提交一定要提交到processAction方法中或者提交到以下方法中:  
+```
+@processAction("submit")
+public void submit(ActionRequest actionRequest, ActionResponse actionResponse) {
+    ...
+}
+```
+***
+* 移除`<aui:form>`自动验证的"Your request completed successfully."信息:  
+在portlet.xml中加入如下定义：  
+```
+<init-param>
+    <name>add-process-action-success-action</name>
+    <value>false</value>
+</init-param>
+```
